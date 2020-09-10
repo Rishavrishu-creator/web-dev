@@ -35,14 +35,7 @@ app.use(limitter({
 }))
 
 
- var transport = nodeMailer.createTransport({
-     service:'gmail',
-     auth:{
-         user:process.env.Gmail,
-         pass :process.env.Password    
-     }
- })
-
+ 
 
 //https://covid19.mathdro.id/api/   it gives the confirmed,recovered and death cases overall
 
@@ -69,6 +62,15 @@ app.get('/contact',function(req,res){
 })
 
 app.post('/email',function(req,res){
+
+    var transport = nodeMailer.createTransport({
+        service:'gmail',
+        auth:{
+            user:process.env.Gmail,
+            pass :process.env.Password    
+        }
+    })
+   
    
     console.log(req.body)
     var random_id =Math.floor(Math.random()*100000)
