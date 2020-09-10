@@ -1,0 +1,711 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 415px)" href="/style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+</head>
+<body onload="myFunction()">
+  <div id="loading"></div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
+        <!-- Brand -->
+        <h3 class="heading ">
+            <span class="tcol">C</span>ovid<span class="tcol">T</span>racker
+        </h3>
+        <div class="navv  ml-auto">
+          <h5>
+            <a class="nav-link" href="/about">About Us</a>
+      </h5>
+      <h5>
+        <a class="nav-link" href="/weather">Weather</a>
+  </h5>
+        <h5>
+              <a class="nav-link" href="/bt">Corona Info</a>
+        </h5>
+<h5>          
+              <a class="nav-link" href="/signup" >SignUp/Login</a>
+            </h5> 
+        </div>
+        <!-- Links -->
+        
+      
+          <!-- Dropdown -->
+         
+        
+      </nav>
+      <div class="clock">
+         
+          <h1 class="clock1">
+              
+          </h1>
+          <h4 class="last">
+             
+          </h4>
+      </div>
+     
+
+      <div class="aa">
+            <h3>Confirmed Cases</h3>
+
+            <p class="para">
+                <%= res.confirmed.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %>
+
+            </p>
+      </div>
+      <div class="aa1">
+        <h3>Recovered Cases</h3>
+        <p class="para">
+            <%= res.recovered.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %>
+        </p>
+    </div>
+    <div class="aa2">
+        <h3>Death Cases</h3>
+        <p class="para">
+            <%= res.deaths.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %>
+        </p>
+    </div>
+
+    <div class="usa">
+        <h1 style="color:green">USA</h1>
+        <div class="para">
+                <p><b> Recovered Cases:</b> <%= res3.recovered.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+                <p> <b>Confirmed Cases: </b><%= res3.confirmed.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+                <p><b> Death Cases:</b> <%= res3.deaths.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+        </div>
+    </div>
+    <div class="india">
+        <h1>INDIA</h1>
+        <div class="para">
+            <p><b> Recovered Cases:</b> <%= res4.recovered.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+                <p> <b>Confirmed Cases: </b><%= res4.confirmed.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+                <p><b> Death Cases:</b> <%= res4.deaths.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+        </div>
+    </div>
+    <div class="aus">
+        <h1>AUSTRALIA</h1>
+        <div class="para">
+            <p><b> Recovered Cases:</b> <%= res5.recovered.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+            <p> <b>Confirmed Cases: </b><%= res5.confirmed.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+            <p><b> Death Cases:</b> <%= res5.deaths.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></p><br>
+
+        </div>
+    </div>
+    
+
+
+
+    <h3 class="country">
+        All Countries
+    </h3>
+
+
+    
+    <input type="text" class="form-control" autocomplete="off" placeholder="Search by city/state name" id="email" required>
+    <h3 class="country1">
+      Click on the city/place name to see it on the map
+  </h3>
+  </div>
+
+  <div class="scroll">
+    <table class="table table-hover ttt">
+        <tr>
+        <th>
+             Country
+        </th>
+        <th>
+          Confirmed
+        </th>
+        <th>
+         Recovered
+        </th>
+        <th>
+           Deaths
+        </th>
+        </tr>
+        <tbody id="myTable">
+    <% for(var i=0;i<res2.length;i++) 
+    {
+        if(res2[i].provinceState==null)
+        {
+            continue;
+        }
+        %>
+        
+        <tr>
+         
+            <td onclick="check('<%= res2[i].lat %>','<%= res2[i].long %>','<%= res2[i].provinceState %>'
+            ,'<%= res2[i].confirmed %>','<%= res2[i].recovered %>','<%= res2[i].deaths %>')">
+             <a href="#map3">
+             <%=
+                res2[i].provinceState %>
+              </a>
+            </td>
+            <td>
+                <%= res2[i].confirmed %>
+                <br>
+                <p style="color: red;margin-left: -20px;"> (Confirmed)</p> 
+               
+            </td>
+            <td>
+               <p class="rec">
+                <%= res2[i].recovered %>
+            </p>
+                
+               <p style="color: green;margin-left: -20px;margin-top: -10px;">(Recovered)</p> 
+            </td>
+            <td>
+                <%= res2[i].deaths %>
+                <br>
+               <p style="color: black;margin-left: -20px;"> (Deaths)</p>
+            </td>
+          
+        </tr>
+        
+        
+<% } %>
+</tbody>
+    </table>
+  </div>
+
+ <hr>
+
+  <div class="chart-container">
+
+  <canvas id="myChart">
+
+
+  </canvas>
+</div>
+<div class="chart-container">
+  <canvas id="myChart1">
+
+
+</canvas>
+</div>
+<div class="chart-container">
+
+<canvas id="myChart2">
+
+
+</canvas>
+</div>
+<hr>
+  <div id = "map" style = "background-color: white; width:700px; height:480px;margin-top: 20px; margin-left: 50vh; margin-bottom: 13px;">
+    <h2 style="text-align:center; margin-top: 10px;">
+        Confirmed Cases
+    </h2>
+  </div>
+  <hr>
+<div id = "map1" style = "background-color: white; width:700px; height:480px;margin-top: 20px; margin-left: 50vh; margin-bottom: 13px;">
+    <h2 style="text-align:center; margin-top: 10px;">
+        Recovered Cases
+    </h2>
+</div>
+<hr>
+<div id = "map2" style = "background-color: white; width:700px; height:480px;margin-top: 20px; margin-left: 50vh; margin-bottom: 13px;">
+    <h2 style="text-align:center; margin-top: 10px;">
+        Death Cases
+    </h2>
+</div>
+<hr>
+
+<div id = "map3" style = "background-color: white; width:700px; height:480px;margin-top: 20px; margin-left: 50vh; margin-bottom: 13px;">
+  <h2 id="hh" style="text-align:center; margin-top: 10px;">
+      
+  </h2>
+</div>
+<hr>
+
+<div class="row" style="margin-top:20px;margin-bottom:20px">
+  <div class="col-1"></div>
+  <div class="col-10" style="border: double;box-shadow: 5px 5px 15px -6px rgba(0,0,0,0.56);">
+  <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" >
+    <div class="carousel-inner" style="height:500px; margin-top: -50px;">
+      <div class="carousel-item active" data-interval="2000">
+      <img src="https://www.hospitalmanagement.net/wp-content/uploads/sites/13/2020/08/coronavirus-2808.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-interval="2000">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTBuQrWIhiKwQLu4hE0WWSxLMMKwuOpcyWogQ&usqp=CAU" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-interval="2000">
+      <img src="https://www.orfonline.org/wp-content/uploads/2020/04/Covid-19-India-and-crisis-communication-1280x720.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+
+<iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
+
+
+
+  <div class="footer" id="aa">
+      <h5>
+          &copy; COVID-19 TRACKER 2020 Designed by Rishav,Ashwath,Radhika (Web Development Project)
+          <br>
+          
+      </h5>
+      <h5 class="call">
+      Call Us At: 6289712990 for any queries</h5>
+      <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+      <a href="https://www.google.co.in/" target="_blank" class="fa fa-google"></a>
+      <a href="https://www.instagram.com/?hl=en" target="_blank" class="fa fa-instagram"></a>
+  </div>
+
+
+
+  
+<script lang="javascript">
+  var zz=[]
+  var lat=[]
+  var lon=[]
+  var values=[]
+
+</script>
+ <%
+ for(var i=0;i<res6.length;i++)
+ {
+   %>
+  <script lang="javascript">
+    
+    if("<%=res6[i].provinceState %>"!="" && !zz.includes("<%= res6[i].provinceState %>")
+    && "<%= res6[i].lat %>"!="" && "<%=res6[i].long %>"!="" && !Number.isNaN("<%= res6[i].long %>")
+    && !Number.isNaN("<%= res2[i].lat %>"))
+    {
+    zz.push("<%= res6[i].provinceState %>")
+    lat.push("<%= res6[i].lat %>")
+    lon.push("<%= res6[i].long %>")
+    values.push("<%= res6[i].recovered %>")
+    }
+
+  </script>
+
+   <%
+ }
+ %>
+
+
+
+
+
+
+ <script lang="javascript">
+  var zz1=[]
+  var lat1=[]
+  var lon1=[]
+  var values1=[]
+
+</script>
+ <%
+ for(var i=0;i<res2.length;i++)
+ {
+   %>
+  <script lang="javascript">
+    
+    if("<%=res2[i].provinceState %>"!="" && "<%=res2[i].provinceState %>"!='undefined' && !zz1.includes("<%= res2[i].provinceState %>")
+    && "<%= res2[i].lat %>"!="" && "<%=res2[i].long %>"!="" && !Number.isNaN("<%= res2[i].long %>")
+    && !Number.isNaN("<%= res2[i].lat %>"))
+    {
+    zz1.push("<%= res2[i].provinceState %>")
+    lat1.push("<%= res2[i].lat %>")
+    lon1.push("<%= res2[i].long %>")
+    values1.push("<%= res2[i].confirmed %>")
+    }
+
+  </script>
+
+   <%
+ }
+ %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script lang="javascript">
+  console.log(lat1)
+  console.log(lon1)
+  console.log(zz1)
+  var array=[];
+  var array1=[];
+  var array2=[];
+  var array3=[];
+  data()
+  async function data()
+{
+  await getInfo()
+  await renderData()
+}
+  
+
+  async function getInfo()
+  {
+    var res = await fetch("https://api.covid19india.org/data.json")
+    var json= await res.json()
+    
+    for(var i=1;i<json.statewise.length;i++)
+    {
+      array.push(json.statewise[i].state)
+      array1.push(json.statewise[i].confirmed)
+      array2.push(json.statewise[i].deaths)
+      array3.push(json.statewise[i].active)
+     }
+    
+   
+    }
+
+    function renderData()
+    {
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: array,
+        datasets: [{
+            label: 'Confirmed Cases',
+            data: array1,
+            backgroundColor:"blue",
+            borderWidth: 1,
+            minBarLength:100
+        }]
+    },
+    options: {
+      responsive:true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+//
+var ctx = document.getElementById('myChart1').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: array,
+        datasets: [{
+            label: 'Active Cases',
+            data: array3,
+            backgroundColor:"green",
+            borderWidth: 1,
+            minBarLength:100
+        }]
+    },
+    options: {
+      responsive:true,
+      mainAspectRatio:false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+//
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: array,
+        datasets: [{
+            label: 'Total Deaths',
+            data: array2,
+            backgroundColor:"red",
+            borderWidth: 1,
+            minBarLength:100
+        }]
+    },
+    options: {
+      responsive:true,
+      mainAspectRatio:false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+//
+    }
+
+  var mar={}
+ 
+  var map = L.map('map').setView([51.505, -0.09], 1);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+/*var zz1=[
+new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+})]
+*/
+
+render()
+  function render()
+  {
+    if(mar!='undefined')
+    {
+      
+      map.removeLayer(mar)
+    for(var i=0;i<zz1.length;i++)
+    {
+      
+        var subCount1 = values1[i]
+        mar = L.circle([lat1[i],lon1[i]],subCount1,{
+          color: "blue",
+          
+          
+          }).addTo(map)
+    .bindPopup('Location: '+zz[i]+"<br>(Confirmed Cases)")
+    
+    }   
+}
+  }
+
+  var mar3={}
+     
+  
+  var map3 = L.map('map3').setView([51.505, -0.09], 1);
+      
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map3);
+  
+
+  function check(a,b,c,d,e,f)
+  {
+   
+  
+      document.getElementById("map3").style.display="block"
+    
+    document.getElementById("hh").innerHTML=c
+   
+    if(mar3!=null)
+    {
+     
+     map3.removeLayer(mar3)
+     
+      mar3 = L.marker([a,b]).addTo(map3)
+    .bindPopup(c+": Confirmed="+d+", Recovered="+e+", Deaths="+f)
+    .openPopup();
+    }
+   
+
+  
+  }
+ 
+ 
+
+
+  var mar1={}
+ 
+  var map1 = L.map('map1').setView([51.505, -0.09], 1);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map1);
+
+
+
+render1()
+  function render1()
+  {
+    if(mar1!='undefined')
+    {
+      
+      map1.removeLayer(mar1)
+    for(var i=0;i<zz.length;i++)
+    {
+      var subCount = values[i]
+      mar1 = L.circle([lat[i],lon[i]],subCount,{
+        color:'green',
+
+      }).addTo(map1)
+    .bindPopup('Location: '+zz[i]+"<br>(Recovered Cases)")
+    .openPopup();
+    }
+    
+    }
+
+  }
+  
+  //
+  var mar2={}
+ 
+  var map2 = L.map('map2').setView([51.505, -0.09], 1);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map2);
+
+render2()
+  function render2()
+  {
+    if(mar2!='undefined')
+    {
+      
+      map2.removeLayer(mar2)
+    for(var i=0;i<zz.length;i++)
+    {
+      mar2 = L.circle([lat[i],lon[i]],29000,{
+          color: "red"
+          }).addTo(map2)
+    .bindPopup('Location: '+zz[i]+"<br>(Confirmed Cases)")
+    .openPopup();
+    }
+    
+    }
+
+  }
+  
+  
+
+
+    var aaa = "<%= res.lastUpdate.toString() %>"
+    var bbb = aaa.slice(0,10)
+    $(".last").text("Last updated on "+bbb)
+
+    
+    $(document).ready(function(){
+   setInterval(timer,1000)
+   function timer()
+   {
+       var d=new Date()
+       var hours = d.getHours()
+       var minutes = d.getMinutes()
+       var sec = d.getSeconds()
+       $(".clock1").text(hours+":"+minutes+":"+sec)
+   }
+    })
+
+    data()
+
+
+    $(document).ready(function(){
+  $("#email").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+       
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        
+     
+    });
+  });
+});
+
+
+
+
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    console.log(rows.length)
+   
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByClassName("rec").innerHTML
+      y = rows[i+1].getElementsByTagName("TD")[2];
+    console.log(x)
+      //check if the two rows should switch place:
+      if (Number(x) > Number(y)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+
+var preloader = document.getElementById("loading");
+		// window.addEventListener('load', function(){
+		// 	preloader.style.display = 'none';
+		// 	})
+
+		function myFunction(){
+			preloader.style.display = 'none';
+		};
+
+
+
+
+
+</script>    
+
+
+
+</body>
+</html>

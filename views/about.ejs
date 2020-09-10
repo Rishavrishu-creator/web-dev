@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #4b5d47;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: #4b5d47;
+}
+
+.button {
+  border: none;
+  border-radius: 5%;
+  padding: 8px;
+  color: white;
+  background-color: #4b5d47;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>A quick short note about us</p>
+  <p>and our contribution in this project</p>
+</div>
+
+<h1 style="text-align:center">Our Team</h1>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/rishav.jpeg" alt="rishav" style="width:100%">
+      <div class="container">
+        <h2>Rishav Agarwal</h2>
+        <p class="title">Maintaining API Calls and maintaining Back-End</p>
+        <p>Phone number - +91 62897 12990</p>
+        <p>rishav.agarwal2019@vitstudent.ac.in</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/radhik.jpeg" alt="Radhika" style="width:100%">
+      <div class="container">
+        <h2>Radhika Mangal</h2>
+        <p class="title">Front-end developer</p>
+        <p>Phone number - +91 91114 59596</p>
+        <p>radhika.mangal2019@vitstudent.ac.in</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="/ash.jpeg" alt="Ashwath" style="width:100%">
+      <div class="container">
+        <h2>Ashwath</h2>
+        <p class="title">Front-end-developer,Content Creator</p>
+        <p>Phone number - +91 6383660273</p>
+        <p>ashwathp.2019@vitstudent.ac.in</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

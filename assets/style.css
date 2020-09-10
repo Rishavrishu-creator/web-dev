@@ -1,0 +1,348 @@
+#loading{
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: #fff
+	url('/loader.gif')
+	 no-repeat center center;	
+	z-index: 99999;
+}
+.carousel-inner{
+    width:100vw;
+}
+
+::-webkit-scrollbar {
+    width: 22px;
+   
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+    
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px black; 
+    background-color: orange;
+}
+
+
+
+
+
+.carousel-inner img {
+    width: 100%;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    height: 100%;
+  }
+
+body{
+    background-size: contain;
+    background-image: url(corona.jpg);
+    background-position: left;
+    background-attachment: fixed;
+    overflow-x: hidden;
+
+}
+#nav{
+    width: 100vw;
+}
+.para{
+    padding-top: 30px;
+     font-size: 22px;
+}
+
+.aa{
+    height: 150px;
+    width: 300px;
+    color: white;
+    background-color: blue;
+    margin-left: 110px;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: chartreuse;
+    display: inline-block;
+    transition : 0.25s;
+}
+
+.aa1{
+    height: 150px;
+    width: 300px;
+    text-align: center;
+    background-color:greenyellow;
+    margin-left: 110px;
+    margin-top: 100px;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: chartreuse;
+    display: inline-block;
+    transition : 0.25s;
+}
+#covid{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+    margin-bottom: 20px;
+    margin-top: 35px;
+}
+.chart-container{
+    width: 400px;
+    height: auto;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+.update h2{
+    margin-top: 25px;
+}
+.country{
+    margin-left: 20%;
+    margin-top: 40px;
+}
+.country1{
+    color: red;
+    margin-left: 20%;
+    margin-top: 40px;
+}
+#form{
+    margin-left: 20%;
+}
+
+.scroll {
+    background-color: #fed9ff;
+    width: 800px;
+    height: 550px;
+    overflow: auto;
+    margin-left: 20%;
+    margin-top: 30px;
+    text-align: justify;
+    padding: 20px;
+  }
+
+.sort{
+    display: inline-block;
+}
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+  html{
+      scroll-behavior: smooth;
+  }
+  .fa:hover {
+      opacity: 0.7;
+  }
+  
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  .fa-google {
+    background: #dd4b39;
+    color: white;
+  }
+  .fa-instagram {
+    background: #125688;
+    color: white;
+  }
+  
+
+
+
+.footer{
+    width: 100%;
+    background-color: black;
+    height: 150px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.footer h5{
+    color: white;
+
+}
+.footer .call{
+    color:rgb(100, 226, 100);
+}
+.clock{
+    padding-top: 100px;
+    text-align: center;
+}
+.rishav{
+    font-size: 30px;
+    color: yellow;
+}
+.india , .aus ,.usa, .aa,.aa1,.aa2,.scroll{
+    box-shadow: 12px 10px 10px -1px rgba(68, 68, 68, 0.7);
+}
+.india p, .aus p,.usa p{
+    background-color: white;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 12px 10px 10px -1px rgba(68, 68, 68, 0.7);
+    transition: .125s;
+}
+.india p:hover, .aus p:hover,.usa p:hover{
+    transform: scale(1.2);
+    overflow: hidden;
+}
+.usa{
+    height: 350px;
+    width: 300px;
+    text-align: center;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRtip3fuYYFyQmKMlEGfV6WjNK2pP7gomoh4w&usqp=CAU');
+    background-position: center;
+    background-size: cover;
+    margin-left: 110px;
+    margin-top: 100px;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: chartreuse;
+    display: inline-block;
+}
+.aus{
+    
+        height: 350px;
+        width: 300px;
+        text-align: center;
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR1EcvULD-d5rcGfujeGrQl2YQ3HeSGagR1Mg&usqp=CAU');
+        background-position: center;
+        background-size: cover;
+        margin-left: 110px;
+        margin-top: 100px;
+        padding-top: 20px;
+        border-radius: 5px;
+        box-shadow: chartreuse;
+        display: inline-block;
+    
+}
+.india p, .aus p,.usa p{
+    color:black;
+    margin-top: -10px;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.india{
+    height: 350px;
+    width: 300px;
+    text-align: center;
+background-image: url('https://imagevars.gulfnews.com/2019/08/22/India-Economy-lead_16cb9c8b639_medium.jpg');
+    background-position: center;
+    background-size: cover;
+    margin-left: 110px;
+    margin-top: 100px;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: chartreuse;
+    display: inline-block;
+}
+#email{
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 20%;
+    width: 350px;
+   
+}
+
+.navv{
+    margin-left: 1%;
+    display: flex;
+    color: red;
+    padding-top: 10px;
+}
+.nav-link{
+    color: greenyellow;
+}
+.nav-link:hover{
+    background-color: greenyellow;
+    color: black;
+    border-radius: 5px;
+}
+.heading{
+    margin-left:1%;
+    cursor: pointer;
+    margin-top: 10px;
+    color: white;
+    padding-left: 20px;
+    transition : 0.25s;
+}
+.heading span{
+    font-size: 40px;
+    color: greenyellow;
+}
+.heading:hover{
+   transform:scale(1.2);
+}
+.aa2{
+    height: 150px;
+    width: 300px;
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    background-color: red;
+    margin-left: 110px;
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: chartreuse;
+    display: inline-block;
+}
+.aa:hover,.aa1:hover,.aa2:hover{
+    transform: scale(1.3);
+}
+#navv{
+    float: right;
+    color: white;
+}
+
+*{
+    padding: 0%;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.chart-container{
+    border: black solid;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 12px 10px 10px -1px rgba(68, 68, 68, 0.7);
+}
+
+#map ,#map1 ,#map2 ,.clock{
+    padding: 20px;
+    background-color: white;
+    border: solid black;
+    border-radius: 30px;
+    box-shadow: 12px 10px 10px -1px rgba(68, 68, 68, 0.7);
+}
+
+.india,.aus,.usa{
+    border: solid black;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.clock{
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.india h1,.aus h1{
+    color: greenyellow;
+}
+.usa h1{
+    color: black;
+}
