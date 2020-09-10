@@ -85,7 +85,11 @@ app.post('/email',function(req,res){
             console.log("html data ======================>", mainOptions.html);
             transport.sendMail(mainOptions, function (err, info) {
                 if (err) {
-                    console.log(err);
+                    res.json({
+                        error:{
+                            message:err
+                        }
+                    })
                    
                 } else {
                     console.log('Message sent: ' + info.response);
@@ -96,7 +100,7 @@ app.post('/email',function(req,res){
         
         });
     
-    res.redirect('/contact')
+    
 })
 
 
