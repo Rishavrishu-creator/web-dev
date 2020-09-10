@@ -35,13 +35,14 @@ app.use(limitter({
 }))
 
 
- var transport = nodeMailer.createTransport({
+ /*var transport = nodeMailer.createTransport({
      service:'gmail',
      auth:{
          user:process.env.Gmail,
          pass :process.env.Password    
      }
  })
+*/
 
 //https://covid19.mathdro.id/api/   it gives the confirmed,recovered and death cases overall
 
