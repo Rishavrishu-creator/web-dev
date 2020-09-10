@@ -68,7 +68,7 @@ app.post('/email',function(req,res){
         service:'gmail',
         auth:{
             user:'rishavrishu2001.ra',
-            pass :process.env.Password    
+            pass :'pincodehas'  
         }
 }))
 
