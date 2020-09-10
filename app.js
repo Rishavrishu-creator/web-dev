@@ -68,7 +68,7 @@ app.get('/contact',function(req,res){
     res.render("contact.ejs")
 })
 
-/*app.post('/email',function(req,res){
+app.post('/email',function(req,res){
    
     console.log(req.body)
     var random_id =Math.floor(Math.random()*100000)
@@ -98,7 +98,7 @@ app.get('/contact',function(req,res){
     
     res.redirect('/contact')
 })
-*/
+
 
 app.get('/weather',function(req,res){
     res.render("weather")
