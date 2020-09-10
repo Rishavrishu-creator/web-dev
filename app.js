@@ -25,6 +25,12 @@ app.use(session({
     secret:"My SECRET KEY"
 }))
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.use(limitter({
     windowMs:5000,
     max:15,
