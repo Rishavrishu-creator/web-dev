@@ -79,7 +79,7 @@ app.get('/contact',function(req,res){
 
 app.post('/email',function(req,res){
 
-    const transport = nodemailer.createTransport({
+    const transport = nodeMailer.createTransport({
         service: "gmail",
         auth: {
              type: "OAuth2",
