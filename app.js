@@ -69,17 +69,13 @@ app.get('/contact',function(req,res){
 })
 
 app.post('/email',function(req,res){
-    var auth = {
-        type: 'OAuth2',
-        user: 'rishavrishu2001.ra@gmail.com',
-        clientId: '739935140116-3frgnjh2puimklj54fkb9rir1puti6pa.apps.googleusercontent.com',
-        clientSecret: 'J9JY-1zOv7npuhqZGcKTfsYE',
-        refreshToken: '1//04nz80eCyIN3bCgYIARAAGAQSNwF-L9Irazy1flm0tspU3-EFoJLMDBxtLe_0v2R3ikogn8FsS2ZNdjivgIYn-xVBBTL8DhQtdlw',
-    };
 
     var transport = nodeMailer.createTransport({
         service:'gmail',
-        auth:auth
+        auth:{
+            user:"rishavrishu2001.ra@gmail.com",
+            pass:process.env.Password
+        }
 })
 
    
