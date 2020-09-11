@@ -83,9 +83,9 @@ app.post('/email',function(req,res){
         service: "gmail",
         auth: {
              type: "OAuth2",
-             user: "rishavrishu2001.ra@gmail.com", //your gmail account you used to set the project up in google cloud console"
-             clientId: "82916183726-g7p1p71rjlafi30bd3o9r5l7hq6hntb1.apps.googleusercontent.com",
-             clientSecret: "ueVCng4nyAqxKKd7cMVztJ3O",
+             user: process.env.Gmail, //your gmail account you used to set the project up in google cloud console"
+             clientId: process.env.Client_Id,
+             clientSecret: process.env.Client_Secret,
              refreshToken: "1//04lo19AtOmwM5CgYIARAAGAQSNwF-L9IrpSeC1OcrzjjOhFXH0XeHKbyiD8LBkMbGOA2xHuI9IWepeGBloZFc6ZcJDEzF2pc-bxQ",
              accessToken: myAccessToken //access token variable we defined earlier
         }});
