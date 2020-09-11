@@ -7,7 +7,8 @@ var session=require('express-session')
 require('dotenv').config()
 var ejs = require('ejs')
 var fetch = require('node-fetch')
-
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
 var nodeMailer = require('nodemailer')
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
@@ -40,8 +41,16 @@ app.use(limitter({
     }
 
 }))
+const myOAuth2Client = new OAuth2(
+    "82916183726-g7p1p71rjlafi30bd3o9r5l7hq6hntb1.apps.googleusercontent.com",
+    "ueVCng4nyAqxKKd7cMVztJ3O",
+    "https://developers.google.com/oauthplayground"
+    )
+    myOAuth2Client.setCredentials({
+        refresh_token:"1//04lo19AtOmwM5CgYIARAAGAQSNwF-L9IrpSeC1OcrzjjOhFXH0XeHKbyiD8LBkMbGOA2xHuI9IWepeGBloZFc6ZcJDEzF2pc-bxQ"
+        });
 
-
+        const myAccessToken = oauth2Client.getAccessToken()
  
 
 //https://covid19.mathdro.id/api/   it gives the confirmed,recovered and death cases overall
@@ -70,13 +79,16 @@ app.get('/contact',function(req,res){
 
 app.post('/email',function(req,res){
 
-    var transport = nodeMailer.createTransport({
-        service:'gmail',
-        auth:{
-            user:"rishavrishu2001.ra@gmail.com",
-            pass:process.env.Password
-        }
-})
+    const transport = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+             type: "OAuth2",
+             user: "rishavrishu2001.ra@gmail.com", //your gmail account you used to set the project up in google cloud console"
+             clientId: "82916183726-g7p1p71rjlafi30bd3o9r5l7hq6hntb1.apps.googleusercontent.com",
+             clientSecret: "ueVCng4nyAqxKKd7cMVztJ3O",
+             refreshToken: "1//04lo19AtOmwM5CgYIARAAGAQSNwF-L9IrpSeC1OcrzjjOhFXH0XeHKbyiD8LBkMbGOA2xHuI9IWepeGBloZFc6ZcJDEzF2pc-bxQ",
+             accessToken: myAccessToken //access token variable we defined earlier
+        }});
 
    
    
