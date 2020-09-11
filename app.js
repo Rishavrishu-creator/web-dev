@@ -50,7 +50,7 @@ const myOAuth2Client = new OAuth2(
         refresh_token:"1//04lo19AtOmwM5CgYIARAAGAQSNwF-L9IrpSeC1OcrzjjOhFXH0XeHKbyiD8LBkMbGOA2xHuI9IWepeGBloZFc6ZcJDEzF2pc-bxQ"
         });
 
-        const myAccessToken = oauth2Client.getAccessToken()
+        const myAccessToken = myOAuth2Client.getAccessToken()
  
 
 //https://covid19.mathdro.id/api/   it gives the confirmed,recovered and death cases overall
