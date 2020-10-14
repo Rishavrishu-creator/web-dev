@@ -27,7 +27,9 @@
 
 
 </head>
-<% if(typeof email!='undefined') 
+
+<body onload="myFunction()">
+  <% if(typeof email!='undefined') 
   {
     %>
     <script language='javascript'>
@@ -37,7 +39,6 @@
    <%
   }
   %>
-<body onload="myFunction()">
   <div id="loading"></div>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
