@@ -16,6 +16,7 @@ app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
 var bodyParser = require('body-parser');
 var UsersModel = require('./schema/users')
+var LikesModel = require('./schema/likes')
 app.use(bodyParser.json())
 app.use(express.static(__dirname+'/assets'));
 app.use(express.static('public'))
@@ -192,7 +193,22 @@ else
 })
 
 app.post('/like',function(req,res){
-    console.log(req,email)
+    console.log(req.body.email)
+    var likeData = {
+        email:req.body.email
+    }
+    LikesModel(likeData).save(function(err){
+        if(err)
+        {
+res.send(err)
+        }
+        else{
+        res.json({
+            message:"Successfully Liked"
+        })
+        }
+    })
+    
 })
 
 

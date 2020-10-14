@@ -411,12 +411,10 @@
 
 
 
-
-
-
-
-
-<script lang="javascript">
+<% if(typeof email!='undefined')
+{
+  %>
+  <script lang="javascript">
   document.getElementById("like").onclick=function()
   {
     var aa = "<%= email %>"
@@ -425,10 +423,19 @@
       method:"POST",
       data:{email:aa},
       success:function(result){
-
+         console.log(result)
       }
     })
   }
+</script>
+  <%
+}
+%>
+
+
+
+<script lang="javascript">
+ 
   var array=[];
   var array1=[];
   var array2=[];
