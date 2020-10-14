@@ -205,8 +205,10 @@ app.get('/shopping',function(req,res){
 
 app.get('/admin',function(req,res){
     UsersModel.find({},function(err,data){
-        res.header('Cntent-type','application/json')
-        res.json(JSON.stringify(data,null,2))
+        
+        res.render("admin",{
+            data:data
+        })
     })
 })
 
