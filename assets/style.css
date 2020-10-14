@@ -1,3 +1,8 @@
+.like{
+    width: 100vw;
+    height: auto;
+}
+
 #loading{
 	position: fixed;
 	width: 100%;
