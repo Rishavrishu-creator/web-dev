@@ -164,7 +164,7 @@ app.post('/signup',function(req,res){
 
       else
       {
-          req.session.email = req.body.emails
+          req.session.email = req.body.email
         res.render("index",{
             'email':req.body.email
         })
@@ -185,18 +185,41 @@ app.post('/loginned',function(req,res){
         email:req.body.email,
         password:req.body.password
     }
-    UsersModel.find(myBodyData,function(err,data){
-        if(err)
+    UsersModel.findOne(myBodyData,function(err,data){
+        if(data==null || data.length==0)
         {
             res.render("login",{
                 'message':"Something went wrong"
             })
+
         }
         else
         {
-        res.json(data)
+            req.session.email = req.body.email
+            res.render("index",{
+                'email':req.body.email
+            })
         }
 
+    })
+})
+
+app.post('/change',function(req,res){
+    var email  =req.body.email
+    var password = req.body.password
+    UsersModel.updateOne({email:email},{$set:{password:password}},function(err){
+        if(err)
+        {
+           res.render("forgot",{
+               message:"Some error"
+           })
+        }
+        else
+        {
+            res.render("login",{
+                password:"Password changed"
+            })
+        }
     })
 })
 
