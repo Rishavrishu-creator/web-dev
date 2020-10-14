@@ -87,7 +87,19 @@ const myOAuth2Client = new OAuth2(
 const url = "https://covid19.mathdro.id/api"
 
 app.get('/contact',function(req,res){
-    res.render("contact.ejs")
+    if(req.session.contact)
+    {
+      delete req.session.contact
+      res.render("contact",{
+        message:"Sent"
+      })
+    }
+    else
+    {
+res.render("contact")
+
+    }
+    
 })
 
 app.post('/email',function(req,res){
@@ -128,6 +140,7 @@ app.post('/email',function(req,res){
                    
                 } else {
                     console.log('Message sent: ' + info.response);
+                    req.session.contact="true"
                     res.redirect('/contact')
                 }
             });
