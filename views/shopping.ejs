@@ -1,0 +1,387 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        *{
+        box-sizing: border-box;
+        padding: 0%;
+        overflow-x: hidden;
+        margin: 0%;
+        }
+        .container{
+            width: 100vw;
+            margin-top: 5px;
+            justify-content: space-between;
+            height: auto;
+            display: flex;     
+        }
+        .items{
+            width:18vw;
+            border-radius:3px;
+            background-color: yellow;
+            margin-left: 3px;
+            border:2px solid black;
+
+        }
+        .aa .cart{
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+-moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+-o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+
+            width:18vw;
+            border-radius:10px;
+            background-color: black;
+            margin-left: 10px;
+            border:2px solid black;
+        }
+        .aa .cart h1{
+            font-size: 25px;
+            color: green;
+            text-align: center;
+        }
+        .aa .cart img{
+            width: 200px;
+            height: 200px;
+            padding-top: 20px;
+            padding-left: 25px;
+        }
+        .aa .cart p{
+            display: inline-block;
+            margin-left:35px;
+            color:white;
+            padding-top: 4px;
+        }
+
+        .items img{
+            width: 200px;
+            height: 200px;
+            padding-left: 20px;
+        }
+        .items h1{
+            font-size: 25px;
+            color: green;
+            text-align: center;
+        }
+        .items p{
+            display: inline-block;
+            margin-left:35px;
+            color:black;
+            padding-top: 4px;
+        }
+        .cart{
+            margin-top: 20px;
+        }
+        .cart h1{
+            text-align: center;
+        }
+        .cart h3{
+            text-align: center;
+        }
+        .items button[type=submit]{
+            padding:10px;
+            margin-bottom: 3px;
+            margin-left: 20px;
+            margin-top: 5px;
+            background-color: black;
+            color: white;
+            border:2px solid black;
+            
+        }
+        button[type=submit]{
+            padding:10px;
+            margin-bottom: 3px;
+            margin-left: 200px;
+            width: 200px;
+            cursor: pointer;
+            margin-top: 5px;
+            background-color: black;
+            color: white;
+            border:2px solid black;
+            margin: 10px;
+        }
+        .ss{
+            color: white;
+            padding-left: 20px;
+        }
+        .aa .cart button[type=submit]{
+            padding:10px;
+            margin-bottom: 3px;
+            cursor: pointer;
+            margin-left: 20px;
+            margin-top: 5px;
+            background-color:white;
+            color: black;
+            border:2px solid white;
+            
+        }
+        .aa .cart button[type=submit1]{
+            padding:10px;
+            margin-bottom: 9px;
+            cursor: pointer;
+            margin-left: 20px;
+            margin-top: 5px;
+            background-color:white;
+            color: black;
+            border:2px solid white;
+            
+        }
+        .aa .cart button[type=submit2]{
+            padding:10px;
+            margin-bottom: 9px;
+            margin-left: 20px;
+            margin-top: 5px;
+            background-color:white;
+            color: black;
+            border:2px solid white;
+            
+        }
+        .aa
+        {
+            width: 100vw;
+            margin-top: 5px;
+            margin-bottom:10px;
+            justify-content: center;
+            height: auto;
+            display: flex;   
+        }
+      
+    </style>
+</head>
+<body>
+    <h1 style="color: rgb(56, 184, 56); text-align: center;">
+      Some of the products
+    </h1>
+
+    <div class="container" id="container1">
+    </div>
+    <div class="cart" id="cart1">
+        <h1>
+            Your Cart
+        </h1>
+
+        <div class="cc" id="cc1">
+
+        </div>
+        <div class="dd" id="dd1">
+
+        </div>
+        <div class="aa" id="aa1">
+
+        </div>
+    </div>
+    <script lang="javascript">
+        
+     var items=[{
+	"id":1,
+  "itemName":"Face mask (1 piece)",
+  "imgSrc":"https://5.imimg.com/data5/DX/HA/MY-2246628/surgical-face-mask-500x500.jpg",
+  "price": 400,
+  "quantityRemaining":12
+},{
+"id":2,
+  "itemName":"Body thermometer",
+  "imgSrc":"https://image.made-in-china.com/202f0j00eVwGoLFIMMqC/FDA-Approved-Infrared-Forehead-Thermometer-No-Contact-Thermometer-Digital-Fever-Thermometer-for-Children-and-Adults.jpg",
+  "price": 500,
+  "quantityRemaining":3
+},{
+"id":3,
+  "itemName":"Sanitizer (200 ml)",
+  "imgSrc":"https://img2.exportersindia.com/product_images/bc-full/2019/6/5182926/hand-sanitizer-1560404843-4949244.jpeg",
+  "price":1000,
+  "quantityRemaining":20
+},{
+"id":4,
+  "itemName":"Gloves",
+  "imgSrc":"https://images-na.ssl-images-amazon.com/images/I/51puq1Mj1uL._SL1000_.jpg",
+  "price":1600,
+  "quantityRemaining":12
+},{
+"id":5,
+  "itemName":"Tissue paper",
+  "imgSrc":"https://t4.ftcdn.net/jpg/02/81/57/63/240_F_281576343_SqYbsM7jTwKjflL7XFMbKJaXptfZCb8V.jpg",
+  "price":850,
+  "quantityRemaining":9
+}];
+var container=document.getElementById("container1");
+container.innerHTML=''
+var html=''
+
+for(var i=0;i<items.length;i++)
+{
+    html=''
+    html='<div class="items" id='+items[i].id+'><h1>'+items[i].itemName+'</h1><img src="'+items[i].imgSrc+'" width="200px" height="200px"><p>Price: '+items[i].price+'</p><p>Stock: '+items[i].quantityRemaining+'</p><br><button type="submit" onclick="fn1('+items[i].id+')"> Add to Cart</button></div>'
+
+    container.innerHTML+=html;
+}
+renderData()
+function fn1(a)
+{
+    
+    var aa=0;
+    for(var i=0;i<items.length;i++)
+    {
+        if(items[i].id==a)
+        {
+           
+           aa=parseInt(items[i].quantityRemaining);
+        }
+        }
+    
+     if(localStorage.length==0)
+     {
+         localStorage.setItem(a,1)
+         console.log(localStorage.length)
+     }
+     else{
+         for(var i=0;i<localStorage.length;i++)
+         {
+             if(localStorage.getItem(a)===null)
+             {
+                localStorage.setItem(a,1)
+                console.log(localStorage.length)
+                break
+             }
+             else{
+                
+                 var dd=localStorage.getItem(a)
+                 console.log(dd)
+                 console.log(aa)
+                 if(parseInt(dd)<aa)
+                 {
+                 localStorage.setItem(a,parseInt(dd)+1)
+                 console.log(localStorage.length)
+                 break
+                 }
+                 else{
+                    console.log(localStorage.length)
+                    console.log("Sorry")
+                     break
+                 }
+             }
+         }
+     }
+     renderData()
+    }
+
+  function renderData()
+  {
+      console.log("Length is:"+localStorage.length)
+      var html=''
+      if(localStorage.length==0)
+      {
+         html="<h3>Your cart looks empty!!Add something</h3>"
+         document.getElementById("cc1").innerHTML=html;
+         document.getElementById("aa1").innerHTML=''
+         document.getElementById("dd1").innerHTML=""
+         return
+      }
+      else{
+        html=''
+        html="<h3>Total number of items: "+localStorage.length+"</h3><button type='submit' onclick='fn3()'>Remove all items</button>"
+            document.getElementById("cc1").innerHTML=html;
+            html=''
+          document.getElementById("aa1").innerHTML=''
+         
+          var array=[]
+          var array1=[]
+          for(var i=0;i<localStorage.length;i++)
+          {
+              array.push(localStorage.getItem(localStorage.key(i)))
+              array1.push(localStorage.key(i))
+          }
+          var price=0;
+          for(var i=0;i<array1.length;i++)
+          {
+              for(var j=0;j<items.length;j++)
+              {
+                  if(array1[i]==items[j].id)
+                  {
+                      
+                    price=price+(array[i]*items[j].price)
+                    break
+                  }
+              }
+          }
+          document.getElementById("dd1").innerHTML="<h3>Your total bill is: "+price+"</h3>"
+          array=[]
+          array1=[]
+          for(var i=0;i<localStorage.length;i++)
+          {
+              var qty=localStorage.getItem(localStorage.key(i))
+              var index=localStorage.key(i)
+              array.push(qty)
+              array1.push(index)
+          }
+        for(var i=0;i<array1.length;i++)
+        {
+        
+        for(var j=0;j<items.length;j++)
+        {
+            if(array1[i]==items[j].id)
+            {
+
+html='<div class="cart" id=aa'+items[j].id+'><h1>'+items[j].itemName+'</h1><img src="'+items[j].imgSrc+'" width="200px" height="200px"><p>Price: '+items[j].price+'</p><p>Quantity: '+array[i]+'</p><button type="submit" onclick="fn2('+array1[i]+')">Remove Item</button><button type="submit1" onclick="increment('+array1[i]+')">+</button><span class="ss">'+array[i]+'</span><button type="submit2" onclick="decrement('+array1[i]+')">-</button></div>'
+document.getElementById("aa1").innerHTML+=html;
+                break
+            }
+        }
+        }
+    }
+  }
+  function fn2(a)
+  {
+     
+     localStorage.removeItem(a)
+    
+     renderData()
+  }
+  function fn3()
+  {
+      localStorage.clear()
+      document.getElementById("aa1").innerHTML=""
+      document.getElementById("dd1").innerHTML=""
+      html="<h3>Your cart looks empty!!Add something</h3>"
+         document.getElementById("cc1").innerHTML=html;
+
+  }
+function increment(a)
+{
+   
+    var aa=0;
+    for(var i=0;i<items.length;i++)
+    {
+        if(items[i].id==a)
+        {
+           
+           aa=parseInt(items[i].quantityRemaining);
+           break
+        }
+        }
+        
+     if(aa>parseInt(localStorage.getItem(a)))
+     {
+         localStorage.setItem(a,parseInt(localStorage.getItem(a))+1)
+         renderData()
+     }
+}
+function decrement(a)
+{
+    if(parseInt(localStorage.getItem(a))==1)
+    {
+        return
+    }
+    localStorage.setItem(a,parseInt(localStorage.getItem(a))-1)
+    renderData()
+
+}
+
+          
+    </script>
+</body>
+</html>
+
+
+
