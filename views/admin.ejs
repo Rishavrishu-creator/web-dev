@@ -16,13 +16,24 @@
 <style>
     .heading{
         text-align: center;
+        margin-top: 30px;
+    }
+    h5{
+        text-align: center;
+    }
+    #table{
+        width: 80vw;
+        margin-left: 10vw;
+        margin-top: 40px;
     }
 </style>
 </head>
 <body>
     <h2 class="heading">There are total <%= data.length %> users
 </h2>
-<table class="table table-striped">
+<h5>Admins: (rishav@gmail.com , mangal.radhika5@gmail.com , ashwathpadmanaban39@gmail.com)
+</h5>
+<table class="table table-striped" id="table">
     <thead>
       <tr>
         <th>Firstname</th>
@@ -31,21 +42,19 @@
       </tr>
     </thead>
     <tbody>
+      <% for(var i=0;i<data.length;i++)
+      {
+          %>
+
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+        <td><%= data[i].first %></td>
+        <td><%= data[i].last %></td>
+        <td><%= data[i].email %></td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      <%
+    }
+    %>
+
     </tbody>
   </table>
 
