@@ -414,27 +414,7 @@
 
 
 
-<% if(typeof email!='undefined')
-{
-  %>
-  <script lang="javascript">
-    $(document).ready(function(){
-      $("#like").click(function(){
-        var aa = "<%= email %>"
-    $.ajax({
-      url:"/like",
-      method:"POST",
-      data:{email:aa},
-      success:function(result){
-         $("#hh").html(result.message+" Total Likes")
-      }
-    })
-      })
-    })
-</script>
-  <%
-}
-%>
+
 
 
 

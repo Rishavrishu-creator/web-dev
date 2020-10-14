@@ -192,27 +192,6 @@ else
 }
 })
 
-app.post('/like',function(req,res){
-    console.log(req.body.email)
-    var likeData = {
-        email:req.body.email
-    }
-    LikesModel(likeData).save(function(err){
-        if(err)
-        {
-res.send(err)
-        }
-        else{
-        LikesModel.find({},function(err,data){
-            res.json({
-                message:data.length
-            })
-        })
-        
-        }
-    })
-    
-})
 
 
 
