@@ -309,6 +309,9 @@
 
 <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
 
+<% if(typeof email!='undefined')
+{
+  %>
 <div class="like">
   <h2 class="hh">If you liked our website,please click the thumbs up icon :)</h2>
 
@@ -317,6 +320,9 @@
 </div>
 </div>
 
+<%
+}
+%>
 
   <div class="footer" id="aa">
       <h5>
@@ -413,7 +419,15 @@
 <script lang="javascript">
   document.getElementById("like").onclick=function()
   {
-    alert("Checking")
+    var aa = "<%= email %>"
+    $.ajax({
+      url:"/like",
+      method:"POST",
+      data:{email:aa},
+      success:function(result){
+
+      }
+    })
   }
   var array=[];
   var array1=[];

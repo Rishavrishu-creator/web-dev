@@ -191,6 +191,12 @@ else
 }
 })
 
+app.post('/like',function(req,res){
+    console.log(req,email)
+})
+
+
+
 app.post('/loginned',function(req,res){
     var myBodyData = {
         email:req.body.email,
