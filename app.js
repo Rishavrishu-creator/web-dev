@@ -199,6 +199,9 @@ app.post('/loginned',function(req,res){
 
     })
 })
+app.get('/shopping',function(req,res){
+    res.render("shopping")
+})
 
 app.get('/admin',function(req,res){
     UsersModel.find({},function(err,data){
