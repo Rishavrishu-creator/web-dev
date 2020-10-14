@@ -7,7 +7,8 @@
 }
 .hh{
     text-align: center;
-    color: yellow;
+    color: orange;
+    margin-top:60px;
 }
 #loading{
 	position: fixed;
