@@ -5,7 +5,10 @@
 .inner{
     margin-left: 45vw;
 }
-
+.hh{
+    text-align: center;
+    color: yellow;
+}
 #loading{
 	position: fixed;
 	width: 100%;
