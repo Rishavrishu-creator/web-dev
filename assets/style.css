@@ -5,9 +5,12 @@
 .inner{
     margin-left: 45vw;
 }
+#like{
+    cursor: pointer;
+}
 .hh{
     text-align: center;
-    color: orange;
+    color: black;
     margin-top:60px;
 }
 #loading{
