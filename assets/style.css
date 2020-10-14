@@ -2,6 +2,9 @@
     width: 100vw;
     height: auto;
 }
+.inner{
+    margin-left: 45vw;
+}
 
 #loading{
 	position: fixed;
