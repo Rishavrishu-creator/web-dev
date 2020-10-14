@@ -1,4 +1,6 @@
 var express = require('express');
+var mongoose = require('mongoose')
+
 var smtpTransport = require('nodemailer-smtp-transport');
 var app = express();
 var limitter = require('express-rate-limit')
@@ -13,7 +15,7 @@ var nodeMailer = require('nodemailer')
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
 var bodyParser = require('body-parser');
-
+var UsersModel = require('./schema/users')
 app.use(bodyParser.json())
 app.use(express.static(__dirname+'/assets'));
 app.use(express.static('public'))
@@ -25,6 +27,17 @@ app.use(session({
     resave:true,
     secret:"My SECRET KEY"
 }))
+
+mongoose.Promise = global.Promise
+mongoose.connect('mongodb://localhost:27017/webPro',{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}).then(function(){
+    console.log("Connection Successful")
+}).catch(function(err){
+    console.log(err)
+
+})
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -124,6 +137,39 @@ app.post('/email',function(req,res){
     
     
 })
+
+
+app.post('/signup',function(req,res){
+  
+   var myBodyData = {
+       first:req.body.first,
+       last:req.body.last,
+       email:req.body.email,
+       password:req.body.password,
+       repassword:req.body.repassword
+   }
+  var data = UsersModel(myBodyData)
+  data.save(function(err){
+      if(err)
+      {
+      if(err.name=='MongoError' && err.code==11000)
+      {
+       res.render("signup",{
+           'message':"Email Id exists"
+       })
+      }
+    }
+
+      else
+      {
+          req.session.email = req.body.emails
+        res.render("index",{
+            'email':req.body.email
+        })
+      }
+  })
+})
+
 
 
 app.get('/weather',function(req,res){
