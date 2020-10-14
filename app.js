@@ -196,9 +196,7 @@ app.post('/loginned',function(req,res){
         else
         {
             req.session.email = req.body.email
-            res.render("index",{
-                'email':req.body.email
-            })
+            res.redirect('/')
         }
 
     })
@@ -222,6 +220,12 @@ app.post('/change',function(req,res){
         }
     })
 })
+
+app.get('/logout',function(req,res){
+    req.session.destroy()
+    res.redirect('/')
+})
+
 
 app.get('/weather',function(req,res){
     res.render("weather")
@@ -274,8 +278,17 @@ app.get('/',function(req,res){
         var data4 = await fetch('https://covid19.mathdro.id/api/countries/australia')
         var response4 = await data4.json()
         
-        
-    res.render("index",{'res':response,'res2':response1,'res3':response2,'res4':response3,'res5':response4,'res6':recovered})
+        if(req.session.email)
+        {
+            console.log(req.session.email)
+            res.render("index",{'res':response,'res2':response1,'res3':response2,'res4':response3,'res5':response4,'res6':recovered,'email':req.session.email})
+
+        }
+        else
+        {
+            res.render("index",{'res':response,'res2':response1,'res3':response2,'res4':response3,'res5':response4,'res6':recovered})
+
+        }
     }
     
 })

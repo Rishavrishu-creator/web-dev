@@ -52,7 +52,7 @@
   <% if(typeof email!='undefined')
   {
     %>
-              <a class="nav-link" href="/signup" >Logout</a>
+              <a class="nav-link" href="/logout" >Logout</a>
       <%
   }
   else 
@@ -62,6 +62,14 @@
 <%
   }
   %>
+  <% if(typeof email!='undefined' && (email=='rishav@gmail.com' ||  email=='mangal.radhika5@gmail.com'))
+  {
+%>
+<a class="nav-link" href="/signup" >Admin</a>
+<%
+  }
+  %>
+
             </h5> 
         </div>
         <!-- Links -->
