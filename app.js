@@ -29,7 +29,7 @@ app.use(session({
 }))
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost:27017/webPro',{
+mongoose.connect('mongodb+srv://Rishav2001:'+process.env.AtlasPassword+'@webpro.b2duk.mongodb.net/webPro?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology:true
 }).then(function(){
