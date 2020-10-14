@@ -318,6 +318,9 @@
   <div class="inner">
   <i class="fa fa-thumbs-up" id="like" style="font-size:98px;color: red;"></i>
 </div>
+<h2 class="hh" id="hh">
+
+</h2>
 </div>
 
 <%
@@ -415,18 +418,19 @@
 {
   %>
   <script lang="javascript">
-  document.getElementById("like").onclick=function()
-  {
-    var aa = "<%= email %>"
+    $(document).ready(function(){
+      $("#like").click(function(){
+        var aa = "<%= email %>"
     $.ajax({
       url:"/like",
       method:"POST",
       data:{email:aa},
       success:function(result){
-         console.log(result)
+         $("#hh").html(result.message+" Total Likes")
       }
     })
-  }
+      })
+    })
 </script>
   <%
 }

@@ -203,9 +203,12 @@ app.post('/like',function(req,res){
 res.send(err)
         }
         else{
-        res.json({
-            message:"Successfully Liked"
+        LikesModel.find({},function(err,data){
+            res.json({
+                message:data.length
+            })
         })
+        
         }
     })
     
