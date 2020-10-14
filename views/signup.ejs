@@ -36,6 +36,25 @@
     </style>
 </head>
 <body>
+  <% if(typeof message!='undefined') 
+  {
+    %>
+    <script language='javascript'>
+      swal('Oops!','This Email Id already exists','error');
+   </script>
+   <%
+  }
+  %>
+  <% if(typeof message1!='undefined') 
+  {
+    %>
+    <script language='javascript'>
+      swal('Oops!','The passwords are not matching','error');
+   </script>
+   <%
+  }
+  %>
+
     <div class="container">
        <div class="main">
            <h1 style="text-align: center; margin-bottom: 30px;">

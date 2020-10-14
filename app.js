@@ -148,6 +148,8 @@ app.post('/signup',function(req,res){
        password:req.body.password,
        repassword:req.body.repassword
    }
+   if(req.body.password==req.body.repassword)
+   {
   var data = UsersModel(myBodyData)
   data.save(function(err){
       if(err)
@@ -168,9 +170,35 @@ app.post('/signup',function(req,res){
         })
       }
   })
+}
+else
+{
+    
+    res.render("signup",{
+        'message1':"Email Id exists"
+    })
+}
 })
 
+app.post('/loginned',function(req,res){
+    var myBodyData = {
+        email:req.body.email,
+        password:req.body.password
+    }
+    UsersModel.find(myBodyData,function(err,data){
+        if(err)
+        {
+            res.render("login",{
+                'message':"Something went wrong"
+            })
+        }
+        else
+        {
+        res.json(data)
+        }
 
+    })
+})
 
 app.get('/weather',function(req,res){
     res.render("weather")
