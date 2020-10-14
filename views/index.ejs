@@ -27,6 +27,16 @@
 
 
 </head>
+<% if(typeof email!='undefined') 
+  {
+    %>
+    <script language='javascript'>
+      var aa  = "<%= email %>"
+      swal('Congratulations','Welcome '+aa,'success');
+   </script>
+   <%
+  }
+  %>
 <body onload="myFunction()">
   <div id="loading"></div>
 
@@ -65,7 +75,7 @@
   <% if(typeof email!='undefined' && (email=='rishav@gmail.com' ||  email=='mangal.radhika5@gmail.com'))
   {
 %>
-<a class="nav-link" href="/signup" >Admin</a>
+<a class="nav-link" href="/admin" >Admin</a>
 <%
   }
   %>

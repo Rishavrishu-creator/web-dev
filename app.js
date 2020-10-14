@@ -165,9 +165,7 @@ app.post('/signup',function(req,res){
       else
       {
           req.session.email = req.body.email
-        res.render("index",{
-            'email':req.body.email
-        })
+          res.redirect('/')
       }
   })
 }
