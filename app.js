@@ -211,12 +211,7 @@ app.post('/like',function(req,res){
         }
         else
         {
-            LikesModel(data).save(function(err){
-                if(err){
-        res.send(err)
-                }
-                else
-                {
+                    console.log("Checking")
                     LikesModel.find({},function(err,data){
                        res.json({
                            length:data.length
@@ -224,10 +219,8 @@ app.post('/like',function(req,res){
                     })
                 }
             })
-        }
-    })
-})
 
+    })
 
 app.post('/loginned',function(req,res){
     var myBodyData = {
