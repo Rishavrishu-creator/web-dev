@@ -320,7 +320,7 @@
     <i class="fa fa-thumbs-up" style="font-size:98px;color:red" id="like"></i>
 
   </div>
-  <h2 class="hh">
+  <h2 class="hh1">
    
   </h2>
 </div>
@@ -358,7 +358,7 @@
       data:{email:email},
       success:function(result){
         console.log(result.length)
-        $(".hh").html("Liked")
+        $(".hh1").html(result.length+" total likes")
       }
     })
   })
