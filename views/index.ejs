@@ -309,6 +309,21 @@
 
 <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
 
+<% if(typeof email!='undefined')
+{
+  %>
+<div class="like">
+  <h2 class="hh">
+    If you liked our website please give a thumbs up :)
+  </h2>
+  <div class="inner">
+    <i class="fa fa-thumbs-up" style="font-size:98px;color:red" id="like"></i>
+
+  </div>
+</div>
+<%
+}
+%>
 
 
 
@@ -325,6 +340,30 @@
       <a href="https://www.instagram.com/?hl=en" target="_blank" class="fa fa-instagram"></a>
   </div>
 
+
+
+  <% if(typeof email!='undefined')
+  {
+    %>
+<script lang="javascript">
+ $(document).ready(function(){
+   var email = "<%= email %>"
+  $("#like").click(function(){
+    $.ajax({
+      url:'/like',
+      method:"POST",
+      data:{email:email},
+      success:function(result){
+        
+      }
+    })
+  })
+ })
+</script>
+
+    <%
+  }
+  %>
 
 
   

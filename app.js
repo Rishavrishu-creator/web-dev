@@ -192,7 +192,9 @@ else
 }
 })
 
-
+app.post('/like',function(req,res){
+    
+})
 
 
 app.post('/loginned',function(req,res){
