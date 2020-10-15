@@ -327,9 +327,13 @@ app.get('/',function(req,res){
         
         if(req.session.email)
         {
-            console.log(req.session.email)
-            res.render("index",{'res':response,'res2':response1,'res3':response2,'res4':response3,'res5':response4,'res6':recovered,'email':req.session.email})
-
+            LikesModel.find({},function(err,data){
+                console.log(req.session.email)
+                res.render("index",{'res':response,'res2':response1,'res3':response2,'res4':response3,'res5':response4,'res6':recovered,'email':req.session.email
+                              ,'likes':data.length})
+    
+            })
+           
         }
         else
         {

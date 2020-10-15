@@ -321,7 +321,13 @@
 
   </div>
   <h2 class="hh1">
-   
+    <% if(typeof likes!='undefined')
+    {
+      %>
+      <%= likes %> total likes
+      <%
+    }
+    %>
   </h2>
 </div>
 <%
@@ -343,6 +349,7 @@
       <a href="https://www.instagram.com/?hl=en" target="_blank" class="fa fa-instagram"></a>
   </div>
 
+  
 
 
   <% if(typeof email!='undefined')
