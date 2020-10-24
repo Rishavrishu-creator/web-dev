@@ -8,7 +8,7 @@ var myUser = new Schema({
         type:String,unique:true
     },
     password:String,
-    repassowrd:String
+    repassword:String
 })
 
 module.exports = mongoose.model('users',myUser)
